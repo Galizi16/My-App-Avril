@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #alertResults { margin-top: 20px; }
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+    <title>Gestion Hôtelière - Rapport et Alertes</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html" id="hotel-brand-name">Gestion Hôtel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"> <a class="nav-link" href="index.html">Accueil</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="tarifs.html">Mes Tarifs</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="disponibilites.html">Mes disponibilités</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="veille.html">Veille concurrentielle</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="staff.html">Mon staff</a> </li>
+                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="alertes.html">Rapport et Alertes</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 flex-grow-1">
+        <h1 class="mb-4">Rapport et Alertes</h1>
+        <div id="messageArea" class="mb-3"></div>
+
+        <section class="mb-4 p-3 border rounded">
+            <h2>Alertes Globales</h2>
+            <p>Consultez toutes les alertes et informations générées à partir des différentes sections.</p>
+            <div id="alertResults">
+                <p class="text-muted">Aucune alerte disponible. Générez un rapport depuis une section (ex. Mon Staff) pour voir les alertes ici.</p>
+            </div>
+            <div class="mt-3 no-print">
+                <button id="printAlertsButton" class="btn btn-secondary me-2">Imprimer</button>
+                <button id="downloadAlertsButton" class="btn btn-secondary">Télécharger (CSV)</button>
+            </div>
+        </section>
+
+        <div class="mt-5">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="bi bi-arrow-left me-2"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-auto py-3">
+        <div class="text-center">
+            © <span id="current-year"></span> - <span id="footer-hotel-name">Gestion Hôtelière</span>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/alertes.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            if(typeof AppConfig !== 'undefined' && AppConfig.hotelName) {
+                document.getElementById('footer-hotel-name').textContent = AppConfig.hotelName;
+                document.getElementById('hotel-brand-name').textContent = AppConfig.hotelName;
+                document.title = AppConfig.hotelName + " - Rapport et Alertes";
+            } else {
+                document.title = "Gestion Hôtelière - Rapport et Alertes";
+            }
+        });
+    </script>
+</body>
+</html>

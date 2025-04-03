@@ -1,0 +1,14 @@
+/* css/style.css */
+
+/* Styles personnalisés pour l'application de gestion hôtelière */
+
+/* Ajoutez vos styles ici au fur et à mesure */
+body {
+    /* Un petit exemple pour voir que le fichier est chargé */
+    /* Vous pouvez enlever cette ligne plus tard */
+    /* background-color: #f8f9fa; */ /* Couleur de fond Bootstrap par défaut */
+}
+
+.navbar-brand {
+    font-weight: bold; /* Rendre le nom de l'hôtel un peu plus visible */
+}
